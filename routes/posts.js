@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const postsController = require('../controllers/postsController')
 
-//Temp test route to be sure its working
-router.get('/', (req, res) => {
-    res.json({ message: 'Posts route working!' })
-})
+//Routes to controller
+router.get('/', postsController.getAllPosts);
+router.get('/:id', postsController.getPostById);
+router.post('/', postsController.createPost);
+router.put('/:id', postsController.updatePost);
+router.delete('/:id', postsController.deletePost)
 
 module.exports = router;
