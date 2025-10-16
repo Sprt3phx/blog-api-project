@@ -11,12 +11,18 @@ let posts = [
     {
         id: 2,
         title: 'Second Post',
-        constent: 'Learning Express controllers is awesome!',
+        content: 'Learning Express controllers is awesome!',
         author: 'Caitie',
         published: false,
         createdAt: new Date().toISOString()
     }
 ];
+
+// GET /api/posts
+exports.getAllPosts = (req, res) => {
+    res.status(200).json(posts);
+};
+
 
 //GET /api/posts/:id
 exports.getPostById = (req, res) => {
@@ -74,13 +80,13 @@ exports.updatePost = (req, res) => {
 
 //Delete /api/posts/:id
 exports.deletePost = (req, res) => {
-    const postId = parseInt(req.params.id);
-    const postIndex = posts.findIndex(p => p.id === postId);
+  const postId = parseInt(req.params.id);
+  const postIndex = posts.findIndex((p) => p.id === postId);
 
-    if (postIndex === -1) {
-        return res.status(404).json({ error: 'Post not found' })
-    }
+  if (postIndex === -1) {
+    return res.status(404).json({ error: "Post not found" });
+  }
 
-    const deleted = posts.splice(postIndex, 1)
-    res.status(200).json({ message: 'Post deleted', deleted })
-}
+  const deleted = posts.splice(postIndex, 1);
+  res.status(200).json({ message: "Post deleted", deleted });
+};

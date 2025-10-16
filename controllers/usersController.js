@@ -16,6 +16,10 @@ let users = [
     }
 ];
 
+// GET /api/users
+exports.getAllUsers = (req, res) => {
+  res.status(200).json(users);
+};
 
 //GET /api/users/:id
 exports.getUserById = (req, res) => {
