@@ -35,7 +35,7 @@ exports.createPost = (req, res) => {
     const { title, content, author, published } = req.body;
 
     if (!title || !content || !author) {
-        return res.status(404).json({ error: 'Title, content, and author required' })
+        return res.status(400).json({ error: 'Title, content, and author required' })
     }
 
     const newPost = {

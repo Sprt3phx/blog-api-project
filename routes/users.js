@@ -1,9 +1,13 @@
 const express = require('express')
 const router = express.Router();
+const usersController = require('../controllers/usersController')
 
-//Temp test to be sure its working 
-router.get('/', (req, res) => {
-    res.json({ message: 'Users route working!' })
-})
+
+router.get('/', usersController.getAllUsers)
+router.get('/', usersController.getUserById)
+router.post('/', usersController.createUser)
+router.put('/', usersController.updateUser)
+router.delete('/', usersController.deleteUser
+)
 
 module.exports = router;
